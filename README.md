@@ -1,6 +1,12 @@
 # token-mix
 
-arch -x86_64
+
+## M1 Mac
+- when bootstraping, ensure you are running in a rosetta terminal
+to run ui in code 
+```
+rch -x86_64 python ui/run.py
+```
 
 A bare-bones implementation of the Ethereum [ERC-20 standard](https://eips.ethereum.org/EIPS/eip-20), written in [Solidity](https://github.com/ethereum/solidity).
 
