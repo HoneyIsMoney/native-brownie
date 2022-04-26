@@ -1,6 +1,14 @@
 eth-brownie>=1.10.0,<2.0.0
+black
 click==7.1.2
+flake8==4.0.1
+mccabe==0.6.1
+mypy-extensions==0.4.3
+pathspec==0.9.0
 pi==0.1.2
+platformdirs==2.5.2
+pycodestyle==2.8.0
+pyflakes==2.4.0
 PyQt5==5.15.4
 pyqt5-plugins==5.15.4.2.2
 PyQt5-Qt5==5.15.2
@@ -9,3 +17,6 @@ pyqt5-tools==5.15.4.3.2
 python-dotenv==0.20.0
 qt5-applications==5.15.2.2.2
 qt5-tools==5.15.2.1.2
+tomli==2.0.1
+typing_extensions==4.2.0
+pytest

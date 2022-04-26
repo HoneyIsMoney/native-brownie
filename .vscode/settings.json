@@ -1,10 +1,13 @@
-
-    {
-        "terminal.integrated.profiles.osx": {
-            "x86 zsh": {
-                "path": "/usr/bin/arch",
-                "args": ["-arch", "x86_64", "/bin/zsh"]
-            }
-        },
-        "terminal.integrated.defaultProfile.osx": "x86 zsh"
+{
+  "terminal.integrated.profiles.osx": {
+    "x86 zsh": {
+      "path": "/usr/bin/arch",
+      "args": ["-arch", "x86_64", "/bin/zsh"]
     }
+  },
+  "terminal.integrated.defaultProfile.osx": "x86 zsh",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.linting.flake8Args": ["--max-line-length=88"]
+}
