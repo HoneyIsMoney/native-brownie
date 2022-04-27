@@ -1,5 +1,9 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+
+from brownie.network import accounts
+from brownie import network
+
 import sys
 
 
@@ -12,14 +16,15 @@ class MyWindow(QMainWindow):
         self.label = QtWidgets.QLabel(self)
         self.label.setText('Hello World!')
         self.label.move(50, 50)
+        network.connect('development')
+        self.user = accounts[0]
 
         bt1 = QtWidgets.QPushButton(self)
         bt1.setText('Click Me!')
         bt1.clicked.connect(self.buttonClicked)
 
     def buttonClicked(self):
-        print('Button Clicked!')
-        self.label.setText('The Button Was Clicked!')
+        self.label.setText(self.user.address)
         self.update()
 
     def update(self):
@@ -35,7 +40,12 @@ def window():
     win = MyWindow()
 
     win.show()
-    print('working')
+
+    # p = project.load("../", name="TokenProject")
+    # p.load_config(
+    # token = Token.deploy("Test Token", "TST", 18, 1e21, {'from': accounts[0]})
+    # print(token.address)
+    # print(p.TokenProject)
     sys.exit(app.exec_())
 
 
