@@ -1,13 +1,20 @@
 from web3 import Web3
 
 
-def new():
+def new(searchString):
     w3 = Web3()
-    account = w3.eth.account.create()
+    searchTo = len(searchString)
+    looking = True
 
-    pub = account.address
-    prv = account.privateKey.hex()
-    return {
-        "public": pub,
-        "private": prv
-    }
+    while looking:
+        account = w3.eth.account.create()
+        pattern = account.address[2:2+searchTo]
+        print({
+            pattern: pattern,
+            searchString: searchString
+        })
+        if pattern == searchString:
+            return {
+                "public": account.address,
+                "private": account.privateKey.hex()
+            }
