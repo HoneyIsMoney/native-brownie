@@ -1,9 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-from brownie.network import accounts
-from brownie import network
-
+import create_account
 import sys
 
 
@@ -13,22 +11,27 @@ class MyWindow(QMainWindow):
         self.setGeometry(100, 100, 300, 300)
         self.setWindowTitle('PyQt5 Tut')
 
-        self.label = QtWidgets.QLabel(self)
-        self.label.setText('Hello World!')
-        self.label.move(50, 50)
-        network.connect('development')
-        self.user = accounts[0]
+        self.public_key_label = QtWidgets.QLabel(self)
+        self.public_key_label.setText('Public Key:')
+        self.public_key_label.move(50, 50)
+
+        self.private_key_label = QtWidgets.QLabel(self)
+        self.private_key_label.setText('Private Key:')
+        self.private_key_label.move(50, 70)
 
         bt1 = QtWidgets.QPushButton(self)
         bt1.setText('Click Me!')
         bt1.clicked.connect(self.buttonClicked)
 
     def buttonClicked(self):
-        self.label.setText(self.user.address)
+        keys = create_account.new()
+        self.public_key_label.setText(keys['public'])
+        self.private_key_label.setText(keys['private'])
         self.update()
 
     def update(self):
-        self.label.adjustSize()
+        self.public_key_label.adjustSize()
+        self.private_key_label.adjustSize()
 
 
 def clicked():
@@ -38,14 +41,7 @@ def clicked():
 def window():
     app = QApplication(sys.argv)
     win = MyWindow()
-
     win.show()
-
-    # p = project.load("../", name="TokenProject")
-    # p.load_config(
-    # token = Token.deploy("Test Token", "TST", 18, 1e21, {'from': accounts[0]})
-    # print(token.address)
-    # print(p.TokenProject)
     sys.exit(app.exec_())
 
 
